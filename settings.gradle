@@ -1,0 +1,2 @@
+rootProject.name='Stock Monitor'
+include ':app'
