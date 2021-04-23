@@ -8,8 +8,11 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface FinnhubService {
-    @GET("api/v1/stock/symbol")
+    @GET("api/{version}/stock/symbol")
     Call<List<Symbol>> listSymbols(
+            @Path("version") String version,
              @Query("token") String token,
-             @Query("exchange") String exch);
+             @Query("exchange") String exch
+             );
+
 }

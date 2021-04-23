@@ -11,12 +11,12 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Symbol> localDataSet;
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
-
         public ViewHolder(View view) {
             super(view);
-            textView = (TextView) view.findViewById(android.R.id.text1);
+            textView = view.findViewById(android.R.id.text1);
         }
 
         public TextView getTextView() {
@@ -35,9 +35,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+    public void updateStocks(List<Symbol> dataSet){
+        this.localDataSet = dataSet;
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        viewHolder.getTextView().setText(localDataSet.get(position).displaySymbol);
+        viewHolder.getTextView()
+                .setText(localDataSet.get(position).displaySymbol);
     }
     @Override
     public int getItemCount() {
